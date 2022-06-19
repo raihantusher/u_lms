@@ -28,4 +28,5 @@ urlpatterns = [
 
     #
     path('panel/', include('adminapp.urls')),
+    path('acc/', include('accounts.urls')),
 ]
