@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1> {{ campaign.name }} - Reports</h1>
+        <hr class="m-3"/>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-2">
+                <div class="card-header bg-dark text-light fw-bolder">Total Emails</div>
+                <div class="card-body">
+                    <h3 class="m-3 text-center fw-bold">{{ campaign.logs.count }}</h3>
+
+                </div>
+            </div>
+
+            <div class="card mb-2">
+                <div class="card-header bg-success text-light fw-bolder">Opened</div>
+                <div class="card-body">
+                    <h1 class="m-3 text-center fw-bold">{{ opened }}</h1>
+                    <hr class="mb-2"/>
+                </div>
+            </div>
+
+            <div class="card mb-2">
+                <div class="card-header bg-warning text-light fw-bolder">Not Opened</div>
+                <div class="card-body">
+                    <h1 class="m-3 text-center fw-bold">{{ not_opened}}</h1>
+                    <hr class="mb-2"/>
+                </div>
+            </div>
+
+            <!--            <div class="card">-->
+            <!--                <div class="card-header bg-primary text-light fw-bolder">Clicks</div>-->
+            <!--                <div class="card-body">-->
+            <!--                    <h1 class="m-3 text-center fw-bold">{{ not_opened}}</h1>-->
+            <!--                    <hr class="mb-2"/>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

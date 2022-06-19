@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>{% block title%}Bookmark your favourite links and Earn money promoting links{% endblock %}</title>
+    <meta name="description" content="{% block desc %}Share your favourite ebooks, tutorials links and earn money promoting affiliate links.{% endblock %}">
+
+
+    <style>
+      html,body {
+         margin:0;
+         padding:0;
+         height:100%;
+      }
+      #container {
+         min-height:100%;
+         position:relative;
+      }
+      #header {
+         background:#ff0;
+         padding: 2px;
+      }
+      #body {
+         padding:10px;
+         padding-bottom:60px;   /* Height of the footer */
+      }
+      #footer {
+         position:static;
+         bottom:0;
+         margin-top:10%;
+         width:100%;
+         /* height:60px;    Height of the footer */
+         background:#6cf;
+         padding:10px 0;
+      }
+
+    </style>
+</head>
+<body>
+
+
+{% if request.user.is_authenticated %}
+<!-- nav start -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="header">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">DevLink</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                </li>
+                <!--        <li class="nav-item">-->
+                <!--          <a class="nav-link" href="#">Pricing</a>-->
+                <!--        </li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="ebookDropDownLink"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Campaign
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="ebookDropDownink">
+                        <li><a class="dropdown-item" href="">Add New Campaign</a></li>
+                        <li><a class="dropdown-item" href="{% url 'adminapp:all_campaign' %}">All Campaigns</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="ebookDropDownLink"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Lists
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="ebookDropDownink">
+                        <li><a class="dropdown-item" href="">Add New Link</a></li>
+                        <hr />
+                        <li><a class="dropdown-item" href="{% url 'adminapp:all_list' %}">All Email Lists</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="ebookDropDownLink"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Template
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="ebookDropDownink">
+                        <li><a class="dropdown-item" href="">Add New Template</a></li>
+                        <li><a class="dropdown-item" href="">All Links</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ request.user }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="">Change Password</a></li>
+                        <li><a class="dropdown-item" href="">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- nav end -->
+{% else %}
+<!-- nav start -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">DevLink</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">LogIn</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- nav end -->
+{% endif %}
+
+<div class="container mt-3">
+    <div class="row">
+        {# include 'comps/message.html' #}
+        {# include 'comps/form_errors.html' #}
+    </div>
+</div>
+{% block content %}
+
+{% endblock %}
+
+<section id="footer" class="bg-dark text-white fw-bold">
+    <div class="container-fluid">
+        <div class="row">
+            <p class="text-white text-center fw-bolder">All rights reserved @DevLink</p>
+        </div>
+    </div>
+
+</section>
+
+{% block scripts %}
+<!-- Optional JavaScript; choose one of the two! -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+-->
+  <!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4645069,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4645069&101" alt="counters" border="0"></a></noscript>
+<!-- Histats.com  END  -->
+{% endblock %}
+</body>
+</html>
