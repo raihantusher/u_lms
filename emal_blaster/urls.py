@@ -19,14 +19,8 @@ from django.urls import path, include
 from . import views
 urlpatterns = [
     path('',  views.Home, name="home"),
-    path('ads/', views.advertisment, name="ads_redirect"),
 
     path('admin/', admin.site.urls),
-    path('app/', include('mainapp.urls')),
-    path('backup/', include('export_import.urls')),
-    path('campaign/', include('campaign.urls')),
 
-    #
-    path('panel/', include('adminapp.urls')),
     path('acc/', include('accounts.urls')),
 ]
