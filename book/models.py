@@ -15,3 +15,7 @@ class Book(models.Model):
     available = models.BooleanField(default=True)
     create_at = models.DateTimeField(auto_now_add=True)
 
+
+    def __str__(self):
+        return self.name
+
