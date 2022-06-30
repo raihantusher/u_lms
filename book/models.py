@@ -5,6 +5,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=150)
+    is_active = models.BooleanField(default=True)
 
 
 class Book(models.Model):
