@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib import messages
 
 from student.models import Department, Student
@@ -108,6 +108,10 @@ def edit_dept(request):
 
 
 def del_dept(request, id):
-    return render(request, 'uc.html')
+    if request.method == "POST":
+        dept = Department.objects.get(pk=id)
+        dept.delete()
+        messages.success(request, f'Department is deleted successfully!')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 # cat operation ends here
