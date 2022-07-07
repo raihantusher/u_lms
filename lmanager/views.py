@@ -54,6 +54,18 @@ def list_book(request):
 
 
 def add_book(request):
+    book_form = BookForm()
+
+    if request.method == "POST":
+        book_form = BookForm(request.POST, request.FILES)
+        if book_form.is_valid():
+            book_form.save()
+            messages.success(request, ' Category is created successfully!')
+            redirect('list_cat')
+
+    context = {
+        'book_book': book_form
+    }
     return render(request, 'backend/book/add.html')
 
 
