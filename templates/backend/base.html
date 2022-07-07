@@ -49,35 +49,35 @@
             <div class="col-md-12">
                 <div class="navbar-collapse collapse ">
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
-                        <li><a href="dashboard.php" class="menu-top-active">DASHBOARD</a></li>
+                        <li><a href="{% url 'l_home' %}" class="menu-top-active">DASHBOARD</a></li>
 
                         <li>
                             <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Categories <i
                                     class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="add-category.php">Add
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'add_cat' %}">Add
                                     Category</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-categories.php">Manage
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'list_cat' %}">Manage
                                     Categories</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Authors <i
+                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Depts.<i
                                     class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="add-author.php">Add
-                                    Author</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-authors.php">Manage
-                                    Authors</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'add_dept' %}">Add
+                                    Dept.</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'list_dept' %}">Manage
+                                    Depts.</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Books <i
                                     class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="add-book.php">Add
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'add_book' %}">Add
                                     Book</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-books.php">Manage
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'list_book' %}">Manage
                                     Books</a></li>
                             </ul>
                         </li>
