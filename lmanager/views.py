@@ -7,6 +7,7 @@ from book.models import Book, Category
 from student.forms import DeptForm
 from book.forms import BookForm, CatForm
 
+
 # Create your views here.
 
 def home(request):
@@ -64,7 +65,7 @@ def add_book(request):
             redirect('list_cat')
 
     context = {
-        'book_book': book_form
+        'book_form': book_form
     }
     return render(request, 'backend/book/add.html')
 
@@ -87,7 +88,19 @@ def list_dept(request):
 
 
 def add_dept(request):
-    return render(request, 'backend/dept/add.html')
+    dept_form = DeptForm()
+
+    if request.method == "POST":
+        dept_form = DeptForm(request.POST, request.FILES)
+        if dept_form.is_valid():
+            dept_form.save()
+            messages.success(request, ' Category is created successfully!')
+            redirect('list_dept')
+
+    context = {
+        'dept_form': dept_form
+    }
+    return render(request, 'backend/dept/add.html', context)
 
 
 def edit_dept(request):
