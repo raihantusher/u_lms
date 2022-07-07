@@ -75,7 +75,11 @@ def edit_book(request, id):
 
 
 def del_book(request, id):
-    return render(request, 'uc.html')
+    if request.method == "POST":
+        book = Book.objects.get(pk=id)
+        book.delete()
+        messages.success(request, f'Book is deleted successfully!')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 # cat operation ends here
