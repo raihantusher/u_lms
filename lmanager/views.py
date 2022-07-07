@@ -42,7 +42,11 @@ def edit_category(request):
 
 
 def del_category(request, id):
-    return render(request, 'uc.html')
+    if request.method == "POST":
+        cat = Category.objects.get(pk=id)
+        cat.delete()
+        messages.success(request, f'Category is deleted successfully!')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 # cat operation ends here
