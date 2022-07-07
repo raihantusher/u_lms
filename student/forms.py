@@ -4,5 +4,5 @@ from .models import Department
 
 class DeptForm(forms.ModelForm):
     class Meta:
-        models = Department
+        model = Department
         fields = "__all__"
