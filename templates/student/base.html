@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <![endif]-->
     <title>Online Library Management System | Admin Dash Board</title>
+    {% block styles %}
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="{% static 'backend/css/bootstrap.css' %}" rel="stylesheet"/>
     <!-- FONT AWESOME STYLE  -->
@@ -18,7 +19,7 @@
     <link href="{% static 'backend/css/style.css' %}" rel="stylesheet"/>
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
-
+    {% endblock %}
 </head>
 <body>
 
@@ -51,8 +52,8 @@
             <div class="col-md-12">
                 <div class="navbar-collapse collapse ">
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
-                        <li><a href="dashboard.php" class="menu-top-active">DASHBOARD</a></li>
-                        <li><a href="issued-books.php">Issued Books</a></li>
+                        <li><a href="{% url 'portal' %}" class="menu-top-active">DASHBOARD</a></li>
+                        <li><a href="{% url 'issued_books' %}">Issued Books</a></li>
                         <li>
                             <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Account <i
                                     class="fa fa-angle-down"></i></a>
@@ -86,7 +87,7 @@
     </div>
 </section>      <!-- FOOTER SECTION END-->
 
-
+{% block scripts %}
 <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 <!-- CORE JQUERY  -->
 <script src="{% static 'backend/js/jquery-1.10.2.js' %}"></script>
@@ -94,5 +95,6 @@
 <script src="{% static 'backend/js/bootstrap.js' %}"></script>
 <!-- CUSTOM SCRIPTS  -->
 <script src="{% static 'backend/js/custom.js' %}"></script>
+{% endblock %}
 </body>
 </html>
