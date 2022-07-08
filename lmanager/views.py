@@ -41,8 +41,22 @@ def add_category(request):
     return render(request, 'backend/category/add.html', context)
 
 
-def edit_category(request):
-    return render(request, 'backend/category/add.html')
+def edit_category(request, id):
+    category = Category.objects.get(pk=id)
+    category_form = CatForm(instance=category)
+
+    if request.method == "POST":
+        category_form = CatForm(instance=category, data=request.POST, files=request.FILES)
+        if category_form.is_valid():
+            category_form.save()
+            messages.success(request, f'category is updated successfully!')
+            redirect('category_list')
+
+    context = {
+        'category_form': category_form,
+        'category': category
+    }
+    return render(request, 'backend/category/add.html', context)
 
 
 def del_category(request, id):
