@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('dashboard/', include('lmanager.urls')),
+    path('portal/', include('student.urls')),
 
     path('acc/', include('accounts.urls')),
 ]
