@@ -97,7 +97,21 @@ def add_book(request):
 
 
 def edit_book(request, id):
-    return render(request, 'backend/book/add.html')
+    book = Book.objects.get(pk=id)
+    book_form = BookForm(instance=category)
+
+    if request.method == "POST":
+        book_form = BookForm(instance=category, data=request.POST, files=request.FILES)
+        if book_form.is_valid():
+            book_form.save()
+            messages.success(request, f'Book is updated successfully!')
+            redirect('list_book')
+
+    context = {
+        'book_form': book_form,
+        'book': book
+    }
+    return render(request, 'backend/book/add.html', context)
 
 
 def del_book(request, id):
