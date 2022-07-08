@@ -17,7 +17,11 @@ def home(request):
 # cat operation starts here
 
 def list_category(request):
-    return render(request, 'backend/category/list.html')
+    cats = Category.objects.all()
+    context = {
+        'all_categories': cats
+    }
+    return render(request, 'backend/category/list.html', context)
 
 
 def add_category(request):
@@ -89,7 +93,15 @@ def del_book(request, id):
 # cat operation ends here
 
 
-# cat operation starts here
+
+
+
+
+
+
+
+
+# department operation starts here
 
 def list_dept(request):
     return render(request, 'backend/dept/list.html')
