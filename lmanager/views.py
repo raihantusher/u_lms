@@ -59,7 +59,11 @@ def del_category(request, id):
 # cat operation starts here
 
 def list_book(request):
-    return render(request, 'backend/book/list.html')
+    books = Book.objects.all()
+    context = {
+        'all_books': books
+    }
+    return render(request, 'backend/book/list.html', context)
 
 
 def add_book(request):
