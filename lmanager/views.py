@@ -108,7 +108,11 @@ def del_book(request, id):
 # department operation starts here
 
 def list_dept(request):
-    return render(request, 'backend/dept/list.html')
+    depts = Department.objects.all()
+    context = {
+        'all_depts': depts
+    }
+    return render(request, 'backend/dept/list.html', context)
 
 
 def add_dept(request):
