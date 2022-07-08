@@ -98,10 +98,10 @@ def add_book(request):
 
 def edit_book(request, id):
     book = Book.objects.get(pk=id)
-    book_form = BookForm(instance=category)
+    book_form = BookForm(instance=book)
 
     if request.method == "POST":
-        book_form = BookForm(instance=category, data=request.POST, files=request.FILES)
+        book_form = BookForm(instance=book, data=request.POST, files=request.FILES)
         if book_form.is_valid():
             book_form.save()
             messages.success(request, f'Book is updated successfully!')
@@ -159,7 +159,21 @@ def add_dept(request):
     return render(request, 'backend/dept/add.html', context)
 
 
-def edit_dept(request):
+def edit_dept(request, id):
+    dept = Department.objects.get(pk=id)
+    dept_form = DeptForm(instance=dept)
+
+    if request.method == "POST":
+        dept_form = CatForm(instance=dept, data=request.POST, files=request.FILES)
+        if dept_form.is_valid():
+            dept_form.save()
+            messages.success(request, f'Department is updated successfully!')
+            redirect('list_dept')
+
+    context = {
+        'dept_form': dept_form,
+        'dept': dept
+    }
     return render(request, 'backend/dept/add.html')
 
 
