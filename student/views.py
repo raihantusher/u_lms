@@ -5,3 +5,7 @@ from django.shortcuts import render
 
 def home(request):
     return render(request, 'student/portal.html')
+
+
+def issued_book(request):
+    return render(request, 'student/issued.html')
