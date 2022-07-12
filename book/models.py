@@ -14,6 +14,8 @@ class Category(models.Model):
 class Book(models.Model):
     image = models.ImageField()
     name = models.CharField(max_length=200)
+    author = models.CharField(max_length=155)
+    page_number = models.CharField(max_length=155)
 
     category = models.ForeignKey(Category, related_name="books", on_delete=models.CASCADE)
     available = models.BooleanField(default=True)
