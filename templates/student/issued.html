@@ -41,17 +41,21 @@
                                         <th>Issued Date</th>
                                         <th>Return Date</th>
                                         <th>Fine in(USD)</th>
+                                        <th>Request Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
                                     <tr class="odd gradeX">
-                                        <td class="center">1</td>
-                                        <td class="center">PHP And MySql programming</td>
+                                        {% for issued in issued_books %}
+                                        <td class="center">{{ issued.id }}</td>
+                                        <td class="center">{{ issued.book.name }}</td>
                                         <td class="center">222333</td>
-                                        <td class="center">2022-01-22 11:59:17</td>
-                                        <td class="center">2022-01-22 12:18:08</td>
+                                        <td class="center">{{ issued.date_time|date:'DATETIME_FORMAT' }}</td>
+                                        <td class="center">{{ issued.return_date|date:'DATETIME_FORMAT' }}</td>
                                         <td class="center">0</td>
+                                        <td class="center">{% if issued.is_issued %}<b class="text-success">Granted</b>{% else %}<b class="text-info">Pending</b>{% endif %}</td>
+                                        {% endfor %}
 
                                     </tr>
 
