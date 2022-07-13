@@ -88,8 +88,9 @@ def login(request):
 
 @login_required(login_url = 'login')
 def logout(request):
-    auth.logout(request)
-    messages.success(request, 'You are logged out.')
+    if request.method == "POST":
+        auth.logout(request)
+        messages.success(request, 'You are logged out.')
     return redirect('login')
 
 
