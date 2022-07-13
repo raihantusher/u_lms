@@ -28,12 +28,12 @@ def book_request(request, id):
             book_student = BookStudent.objects.filter(book=book, student=student).last()
 
             if book_student.is_returned == True:
-                print("book student is returned ")
+                # book student is returned
                 BookStudent.objects.create(book=book, student=student)
             elif book_student.is_returned == False:
                 pass
             else:
-                print(" Book is not available")
+                #Book is not available
                 BookStudent.objects.create(book=book, student=student)
 
         # print(request.POST.get('book_id'))
