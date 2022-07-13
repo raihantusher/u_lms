@@ -6,12 +6,24 @@ from book.models import Book, Category
 
 from student.forms import DeptForm
 from book.forms import BookForm, CatForm
-
+from accounts.models import Account as User
+from student.models import BookStudent
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'backend/dashboard.html')
+    total_books = Book.objects.all().count()
+    total_not_returned = BookStudent.objects.filter(is_returned=False).all().count()
+    registered_user = User.objects.all().count()
+    listed_categories = Category.objects.all().count()
+
+    context = {
+        'total_books': total_books,
+        'total_not_returned': total_not_returned,
+        'registered_user': registered_user,
+        'listed_categories': listed_categories
+    }
+    return render(request, 'backend/dashboard.html', context)
 
 
 # cat operation starts here
@@ -123,14 +135,6 @@ def del_book(request, id):
 
 
 # cat operation ends here
-
-
-
-
-
-
-
-
 
 
 # department operation starts here
