@@ -26,7 +26,6 @@ class Student(models.Model):
 class BookStudent(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    fine = models.FloatField(default=0)
     is_returned = models.BooleanField(default=False)
     is_issued = models.BooleanField(default=False)
     date_time = models.DateTimeField(auto_now_add=True)
