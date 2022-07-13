@@ -9,7 +9,7 @@
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <![endif]-->
-    <title>{% block title %}Online Library Management System | Admin Dash Board{% endblock %}</title>
+    <title>Online Library Management System | Admin Dash Board</title>
     {% block styles %}
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="{% static 'backend/css/bootstrap.css' %}" rel="stylesheet"/>
@@ -40,7 +40,8 @@
         </div>
 
         <div class="right-div">
-            <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
+            <form method="post" action="{% url 'logout' %}" id="logout-form">{% csrf_token %}</form>
+            <a href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();" class="btn btn-danger pull-right">LOG ME OUT</a>
         </div>
     </div>
 </div>
@@ -54,6 +55,15 @@
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'portal' %}" class="menu-top-active">DASHBOARD</a></li>
                         <li><a href="{% url 'issued_books' %}">Issued Books</a></li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Account <i
+                                    class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="my-profile.php">My
+                                    Profile</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </div>
             </div>
