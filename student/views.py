@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import BookStudent
+
 
 # Create your views here.
 
@@ -8,4 +10,11 @@ def home(request):
 
 
 def issued_book(request):
-    return render(request, 'student/issued.html')
+    issued_book = BookStudent.objects.filter(
+        student=request.user.student
+    ).all().order_by('-id')
+
+    context = {
+        'issued_books': issued_book
+    }
+    return render(request, 'student/issued.html', context)
