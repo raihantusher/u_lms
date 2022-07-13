@@ -129,10 +129,14 @@
                         <div class="read-bm-dl"><a
                                 href="http://www.appslid.com/VirtualLibrary/product-pdf/Fundamentals Of Computer Networking And Internetworking.pdf"
                                 target="_blank"> Read </a></div>
-
+                        {% if request.user.is_authenticated %}
                         <div class="read-bm-dl">
-                            <a href="#" data-toggle="modal" data-target="#userLogin_form">Bookmark</a>
+                            <form action="{% url 'book_request' single_book.id %}" method="post" id="request-book">{% csrf_token %}
+                                <input type="hidden" value="{{ single_book.id }}"  name="book_id"/>
+                            </form>
+                            <a href="javascript:void(0)"  onclick="document.getElementById('request-book').submit();">Request Book</a>
                         </div>
+                        {% endif %}
 
                         <div class="read-bm-dl">
                             <a href="#" data-toggle="modal" data-target="#userLogin_form">Download</a>
