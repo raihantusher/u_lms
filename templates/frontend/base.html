@@ -36,7 +36,7 @@
         <div class="row">
             <!-- LOGO -->
             <div class="col-md-2">
-                <a href="index.html" class="logo-img"><img src="{% static 'frontend/images/1645320214Virtual-Library-Logo-2.png' %}" alt=""></a>
+                <a href="{% url 'home' %}" class="logo-img"><img src="{% static 'frontend/images/1645320214Virtual-Library-Logo-2.png' %}" alt=""></a>
             </div>
             <!-- /LOGO -->
 
@@ -116,16 +116,9 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="menu-list">
-                    <li><a href="sub_categoryb946.html?cat=5">ETE</a></li>
-                    <li><a href="sub_categoryaa1e.html?cat=4">EEE</a></li>
-                    <li><a href="sub_category81ea.html?cat=3">CSE</a></li>
-                    <li><a href="sub_categoryb0b7.html?cat=6">CE</a></li>
-                    <li><a href="sub_categoryc728.html?cat=7">BBA</a></li>
-                    <li><a href="sub_categoryd65e.html?cat=8">English</a></li>
-                    <li><a href="sub_category0b40.html?cat=9">বাংলা</a></li>
-                    <li><a href="sub_category1cd2.html?cat=10">Law</a></li>
-                    <li><a href="sub_category29c7.html?cat=11">বঙ্গবন্ধু শেখ মুজিবুর রহমান</a></li>
-                    <li><a href="sub_category5b0d.html?cat=12">MBA</a></li>
+                    {% for link in links %}
+                    <li><a href="#">{{  link.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -258,6 +251,5 @@
 </script>
 
 </body>
-
 <!-- Mirrored from www.appslid.com/VirtualLibrary/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Jul 2022 04:57:46 GMT -->
 </html>
