@@ -1,0 +1,8 @@
+{% extends 'backend/base.html' %}
+
+{% block content %}
+
+{% for req in requests %}
+    <p> {{ req.book.name }}</p>
+{% endfor %}
+{% endblock %}
