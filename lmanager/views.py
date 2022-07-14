@@ -106,7 +106,7 @@ def add_book(request):
     context = {
         'book_form': book_form
     }
-    return render(request, 'backend/book/add.html')
+    return render(request, 'backend/book/add.html', context)
 
 
 def edit_book(request, id):
