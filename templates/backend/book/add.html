@@ -17,7 +17,8 @@
                     Book Info
                 </div>
                 <div class="panel-body">
-                    <form role="form" method="post">
+                    <form role="form" method="post" enctype="multipart/form-data">{% csrf_token %}
+                        {{ book_form }}
 <!--                        <div class="form-group">-->
 <!--                            <label>Book Name</label>-->
 <!--                            <input class="form-control" type="text" name="category" autocomplete="off" required/>-->
