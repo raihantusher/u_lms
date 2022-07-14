@@ -9,6 +9,7 @@ from book.forms import BookForm, CatForm
 from accounts.models import Account as User
 from student.models import BookStudent
 
+
 # Create your views here.
 
 def home(request):
@@ -188,4 +189,18 @@ def del_dept(request, id):
         messages.success(request, f'Department is deleted successfully!')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
 # cat operation ends here
+
+
+def issue_request(request):
+    book_pending = BookStudent.objects.filter(is_issued=False).order_by("-id")
+    context = {
+
+        'requests': book_pending
+    }
+    return render(request, "backend/issue/request.html", context)
+
+
+def issue_toggle(request):
+    pass
