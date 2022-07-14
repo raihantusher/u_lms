@@ -20,4 +20,8 @@ urlpatterns = [
     path('dept/add/', views.add_dept, name="add_dept"),
     path('dept/edit/<int:id>/', views.edit_dept, name="edit_dept"),
     path('dept/<int:id>/delete/', views.del_dept, name="delete_dept"),
+
+    path('all-requests/', views.issue_request, name="all_requests"),
+
+
 ]
