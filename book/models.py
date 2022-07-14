@@ -16,6 +16,7 @@ class Book(models.Model):
     name = models.CharField(max_length=200)
     author = models.CharField(max_length=155)
     page_number = models.CharField(max_length=155)
+    pdf = models.FileField(null=True, blank=True)
 
     category = models.ForeignKey(Category, related_name="books", on_delete=models.CASCADE)
     available = models.BooleanField(default=True)
