@@ -49,8 +49,10 @@
                                                 <td class="center">{{ dept.id }}</td>
                                                 <td class="center">{{ dept.name }}</td>
                                                 <td class="center">
-                                                    <button class="btn btn-primary">Edit</button>
-                                                    <button class="btn btn-danger">Delete</button>
+                                                    <form method="post" action="{% url 'delete_dept' dept.id %}">{% csrf_token %}
+                                                        <a href="{% url 'edit_dept' dept.id  %}" class="btn btn-primary">Edit</a>
+                                                        <button  type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                     {% endfor %}
