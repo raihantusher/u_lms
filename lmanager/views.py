@@ -178,7 +178,7 @@ def edit_dept(request, id):
         'dept_form': dept_form,
         'dept': dept
     }
-    return render(request, 'backend/dept/add.html')
+    return render(request, 'backend/dept/add.html', context)
 
 
 def del_dept(request, id):
