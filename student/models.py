@@ -22,6 +22,10 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def full_name(self):
+        return self.account.first_name+' '+self.account.last_name
+
 
 class BookStudent(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
