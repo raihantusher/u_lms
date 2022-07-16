@@ -46,18 +46,19 @@
                                     </thead>
                                     <tbody>
 
-                                    <tr class="odd gradeX">
+
                                         {% for issued in issued_books %}
+                                    <tr class="odd gradeX">
                                         <td class="center">{{ issued.id }}</td>
                                         <td class="center">{{ issued.book.name }}</td>
-                                        <td class="center">222333</td>
                                         <td class="center">{{ issued.date_time|date:'DATETIME_FORMAT' }}</td>
                                         <td class="center">{{ issued.return_date|date:'DATETIME_FORMAT' }}</td>
                                         <td class="center">0</td>
                                         <td class="center">{% if issued.is_issued %}<b class="text-success">Granted</b>{% else %}<b class="text-info">Pending</b>{% endif %}</td>
+                                    </tr>
                                         {% endfor %}
 
-                                    </tr>
+
 
                                     </tbody>
                                 </table>
