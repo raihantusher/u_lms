@@ -24,5 +24,7 @@ urlpatterns = [
     path('pending-requests/', views.issue_request, name="pending_requests"),
     path('issued-book/', views.issued_book, name="all_requests"),
 
+    path('students/', views.students_profile, name="all_students"),
+
 
 ]
