@@ -199,6 +199,7 @@ def issue_request(request):
     }
     return render(request, "backend/issue/request.html", context)
 
+
 def issued_book(request):
     book_pending = BookStudent.objects.filter(is_issued=True).order_by("-id")
     context = {
@@ -210,5 +211,10 @@ def issued_book(request):
 def issue_toggle(request):
     pass
 
+
 def students_profile(request):
-    pass
+    students = Student.objects.all()
+    context = {
+        'all_students': students
+    }
+    return render(request, 'backend/student/profiles.html', context)
