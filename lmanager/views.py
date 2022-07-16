@@ -139,7 +139,6 @@ def del_book(request, id):
 
 
 # department operation starts here
-
 def list_dept(request):
     depts = Department.objects.all()
     context = {
@@ -196,7 +195,13 @@ def del_dept(request, id):
 def issue_request(request):
     book_pending = BookStudent.objects.filter(is_issued=False).order_by("-id")
     context = {
+        'requests': book_pending
+    }
+    return render(request, "backend/issue/request.html", context)
 
+def issued_book(request):
+    book_pending = BookStudent.objects.filter(is_issued=True).order_by("-id")
+    context = {
         'requests': book_pending
     }
     return render(request, "backend/issue/request.html", context)
