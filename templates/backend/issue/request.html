@@ -1,8 +1,93 @@
 {% extends 'backend/base.html' %}
+{% load static %}
+
+{% block styles %}
+<!-- BOOTSTRAP CORE STYLE  -->
+    <link href="{% static 'backend/css/bootstrap.css' %}" rel="stylesheet" />
+    <!-- FONT AWESOME STYLE  -->
+    <link href="{% static 'backend/css/font-awesome.css' %}" rel="stylesheet" />
+    <!-- DATATABLE STYLE  -->
+    <link href="{% static 'backend/js/dataTables/dataTables.bootstrap.css' %}" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="{% static 'backend/css/style.css' %}" rel="stylesheet" />
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+{% endblock %}
 
 {% block content %}
+<!-- MENU SECTION END-->
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row pad-botm">
+            <div class="col-md-12">
+                <h4 class="header-line">All Issued Request</h4>
+            </div>
 
-{% for req in requests %}
-    <p> {{ req.book.name }}</p>
-{% endfor %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Issued Books
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Book Name</th>
+                                        <th>ISBN</th>
+                                        <th>Author</th>
+                                        <th>Page Number</th>
+                                        <th>Category</th>
+                                        <th>available</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr class="odd gradeX">
+                                        {% for req in requests %}
+                                        <td class="center">{{ req.id }}</td>
+                                        <td class="center">{{ reqbook.name }}</td>
+                                        <td class="center">222333</td>
+                                        <td class="center">{{ req.book.author }}</td>
+                                        <td class="center">{{ req.book.page_number }}</td>
+                                        <td class="center">{{ book.available }}</td>
+                                        <td>
+                                            <b
+                                        {% endfor %}
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY  -->
+    <script src="{% static 'backend/js/jquery-1.10.2.js' %}"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="{% static 'backend/js/bootstrap.js' %}"></script>
+    <!-- DATATABLE SCRIPTS  -->
+    <script src="{% static 'backend/js/dataTables/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'backend/js/dataTables/dataTables.bootstrap.js' %}"></script>
+      <!-- CUSTOM SCRIPTS  -->
+    <script src="{% static 'backend/js/custom.js' %}"></script>
 {% endblock %}
