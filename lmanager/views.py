@@ -209,3 +209,6 @@ def issued_book(request):
 
 def issue_toggle(request):
     pass
+
+def students_profile(request):
+    pass
