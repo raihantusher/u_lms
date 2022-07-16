@@ -21,7 +21,8 @@ urlpatterns = [
     path('dept/edit/<int:id>/', views.edit_dept, name="edit_dept"),
     path('dept/<int:id>/delete/', views.del_dept, name="delete_dept"),
 
-    path('all-requests/', views.issue_request, name="all_requests"),
+    path('pending-requests/', views.issue_request, name="pending_requests"),
+    path('issued-book/', views.issued_book, name="all_requests"),
 
 
 ]
