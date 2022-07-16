@@ -46,21 +46,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
+                                    {% for req in requests %}
                                     <tr class="odd gradeX">
-                                        {% for req in requests %}
                                         <td class="center">{{ req.id }}</td>
                                         <td class="center">{{ reqbook.name }}</td>
                                         <td class="center">222333</td>
                                         <td class="center">{{ req.book.author }}</td>
                                         <td class="center">{{ req.book.page_number }}</td>
                                         <td class="center">{{ book.available }}</td>
-                                        <td>
-                                            <b
-                                        {% endfor %}
-
                                     </tr>
-
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
