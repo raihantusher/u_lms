@@ -40,7 +40,8 @@
         </div>
 
         <div class="right-div">
-            <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
+            <form method="post" action="{% url 'logout' %}" id="logout-form">{% csrf_token %}</form>
+            <a href="javascript:void(0)" class="btn btn-danger pull-right" onclick="document.getElementById('logout-form').submit();" >LOG ME OUT</a>
         </div>
     </div>
 </div>
