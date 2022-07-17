@@ -1,5 +1,6 @@
 {% extends 'backend/base.html' %}
 
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -20,7 +21,7 @@
                 </div>
                 <div class="panel-body">
                     <form role="form" method="post">{% csrf_token %}
-                        {{ category_form }}
+                        {{ category_form|crispy }}
 <!--                        <div class="form-group">-->
 <!--                            <label>Category Name</label>-->
 <!--                            <input class="form-control" type="text" name="category" autocomplete="off" required/>-->

@@ -1,5 +1,6 @@
 {% extends 'backend/base.html' %}
 
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -18,7 +19,7 @@
                 </div>
                 <div class="panel-body">
                     <form role="form" method="post" enctype="multipart/form-data">{% csrf_token %}
-                        {{ book_form }}
+                        {{ book_form|crispy }}
 <!--                        <div class="form-group">-->
 <!--                            <label>Book Name</label>-->
 <!--                            <input class="form-control" type="text" name="category" autocomplete="off" required/>-->
